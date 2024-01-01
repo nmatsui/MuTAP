@@ -1,11 +1,12 @@
 import ast  
 import re
-import openai 
+from openai import OpenAI
 import os
 #from Sematic_err_correction import check_test_oracle_sematic
 import sys
 
-openai.api_key = "My_key"
+# Your OpenAI API key should be set as the environment variable `OPENAI_API_KEY`.
+client = OpenAI()
 #a function to generate the intial prompt to call the model
 def initalPromptGenerator(function_to_test):
     inital_prompt = f""" Generate test cases for
@@ -73,14 +74,14 @@ def call_prompt_on_model(
     prompt: str,  
     stop_w: str ,  
     max_tokens: int ,  
-    code_model: str = "code-cushman-001",  
+    code_model: str = "gpt-3.5-turbo-instruct",
     temperature: float = 0.8,  
     reruns_if_empty: int = 2,  
     reruns_no_assert: int = 2, 
 ) -> str:
     
     
-    explanation_response = openai.Completion.create(
+    explanation_response = client.completions.create(
     model=code_model,
     prompt=prompt,
     stop=stop_w,
@@ -91,7 +92,7 @@ def call_prompt_on_model(
 
     explanation_completion = ""
     for event in explanation_response:
-        event_text = event["choices"][0]["text"]
+        event_text = event.choices[0].text
         explanation_completion += event_text
 
     if reruns_if_empty>0 and all(elem == '\n' for elem in explanation_completion):
