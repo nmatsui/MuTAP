@@ -34,21 +34,21 @@ def Generate_Mutants(DATASET,num,input_string):
         test_path = os.path.join(CODE_DIR, TEST_NAME)
 
 
-        os.makedirs(os.path.join(CODE_DIR, "Mutants"), exist_ok=True)
-        
-        OUT_NAME = "mutants_all_" + SCRIPT + ".txt"
-        command = f"mut.py --target {target_path} --unit-test {test_path} -m > {os.path.join(CODE_DIR, 'Mutants', OUT_NAME)}"
+    os.makedirs(os.path.join(CODE_DIR, "Mutants"), exist_ok=True)
+    
+    OUT_NAME = "mutants_all_" + SCRIPT + ".txt"
+    command = f"mut.py --target {target_path} --unit-test {test_path} -m > {os.path.join(CODE_DIR, 'Mutants', OUT_NAME)}"
 
-        print("\033[92m" + command + "\033[0m")
+    print("\033[92m" + command + "\033[0m")
 
-        try:
-            output = subprocess.run(
-                command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE
-            )
-        except:
-            print("file not found: " + SCRIPT)
-        
-        print(output.stdout.decode("utf-8"))
+    try:
+        output = subprocess.run(
+            command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE
+        )
+    except:
+        print("file not found: " + SCRIPT)
+    
+    print(output.stdout.decode("utf-8"))
 
 
 
