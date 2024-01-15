@@ -218,13 +218,13 @@ def filter_greedily(script_dirs: list, assert_dict: dict) -> list:
 
 def main():
     arguments = sys.argv
-    if len(arguments) != 7:
-        raise SystemExit('7 inputs are required: greedy_test_generator.py [dataset] [csv report filename (.csv)]')
+    if len(arguments) != 3:
+        raise SystemExit('2 inputs are required: greedy_test_generator.py [dataset] [csv report filename (.csv)]')
     else:
         DATASET= arguments[1]
         greedy_report = arguments[2]
         if DATASET == "HumanEval":
-            esults_path = os.path.join(os.getcwd(), DATASET, "Testing_HumanEval", greedy_report) 
+            results_path = os.path.join(os.getcwd(), DATASET, "Testing_HumanEval", greedy_report) 
 
         elif DATASET == "Refactory":
             results_path = os.path.join(os.getcwd(), DATASET, "Reference_Scripts", "Tests", greedy_report)
