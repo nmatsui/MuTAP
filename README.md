@@ -93,13 +93,13 @@ def any_int(x, y, z):
           return False
 ```
 ```python
-python generate_test_oracle.py "fewshot" "HumanEval" 92 "script_NDS_" "T_O_FS_synxfixed_" "fewshot_synx_fix.csv"
-python semantic_err_correction.py "HumanEval" 92 "T_O_FS_synxfixed_" "T_O_FS_semticfixed_" "fewshot_semantic_fix.csv"
-python Mutants_generation.py "HumanEval" 92 "script_NDS_" "mutant_type.csv"
-python Mutation_Score.py "HumanEval" 92  "T_O_FS_semticfixed_" "fewshot_mutant_score.csv"
-python augmented_prompt.py "fewshot" "HumanEval" 92 "T_O_FS_semticfixed_" "test_oracle_FS_Mut_" "fewshot_mutant_score.csv"
-python Merge_all_mut.py  "HumanEval" 92 "T_O_FS_semticfixed_" "test_oracle_FS_Mut_" "T_O_FS_Mut_all_"
-python greedy_test_generator.py "HumanEval" "greedy_FS_results.scv"
+python MuTAP/generate_test_oracle.py "fewshot" "HumanEval" 92 "script_NDS_" "T_O_FS_synxfixed_" "fewshot_synx_fix.csv"
+python MuTAP/Sematic_err_correction.py "HumanEval" 92 "T_O_FS_synxfixed_" "T_O_FS_semticfixed_" "fewshot_semantic_fix.csv"
+python MuTAP/Mutants_generation.py "HumanEval" 92 "script_NDS_" "mutant_type.csv"
+python MuTAP/Mutation_Score.py "HumanEval" 92  "T_O_FS_semticfixed_" "fewshot_mutant_score.csv"
+python MuTAP/augmented_prompt.py "fewshot" "HumanEval" 92 "T_O_FS_semticfixed_" "test_oracle_FS_Mut_" "fewshot_mutant_score.csv"
+python MuTAP/Merge_all_mut.py  "HumanEval" 92 "T_O_FS_semticfixed_" "test_oracle_FS_Mut_" "T_O_FS_Mut_all_"
+python MuTAP/greedy_test_generator.py "HumanEval" "greedy_FS_results.scv"
 ```
 
 The final test case that `MuTAP` generates for this example `PUT` is as follows:
