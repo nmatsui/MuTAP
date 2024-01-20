@@ -87,14 +87,14 @@ def prompt_augmentation (prmpt, DATASET,num, input_string, output_string, mut_re
     if PUT_inx>=0:
         row = mut_dt.iloc[PUT_inx]
         print(row)
-        if row['MS'] <1 and row['is_problematic'] != 2:
+        if pd.DataFrame.all((row['MS'] < 1) & (row['is_problematic'] != 2)):
 
             with open(input_path) as input:
                 function_to_test = input.read()
 
             lst_mut= row['lst_survived']
             j=0
-            for mut in row['lst_survived']:
+            for mut in row['lst_survived'].iloc[-1]:
                 if DATASET == "HumanEval":
                     mutant_path = os.path.join(CODE_DIR_HE, SCRIPT, "Mutants", mut)
 
