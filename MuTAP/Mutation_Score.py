@@ -145,7 +145,7 @@ def MS_generator (DATASET, SCRIPT, script_string, csv_name):
            # mut_file.write("\n")
     #mut_file.close()
 
-    result_dt.to_csv(mutation_csv_path, mode='a', index=False, header=True)
+    result_dt.to_csv(mutation_csv_path, mode='w', index=False, header=True)
 
 
 
