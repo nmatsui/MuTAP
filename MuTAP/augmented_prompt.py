@@ -86,7 +86,6 @@ def prompt_augmentation (prmpt, DATASET,num, input_string, output_string, mut_re
    
     if PUT_inx>=0:
         row = mut_dt.iloc[PUT_inx]
-        print(row)
         if pd.DataFrame.all((row['MS'] < 1) & (row['is_problematic'] != 2)):
 
             with open(input_path) as input:
@@ -116,16 +115,14 @@ def prompt_augmentation (prmpt, DATASET,num, input_string, output_string, mut_re
                     mutant_prompt = fewshotMutantPromptGenerator(fewshot_content, function_to_test, mutant_content)
 
                 model_output = call_LLMs(mutant_prompt, "```", 200) 
-                print("inside function")
-                print(model_output)
-                print("############")
-
 
                 output= function_to_test.split("def test():")
                 code= output[0]
                 test = output[1]
                 file_content = code + "\ndef test():\n    " + model_output
+                print("############# augmented tests start ############")
                 print(file_content)
+                print("############# augmented tests end   ############")
                 if DATASET == "HumanEval":
                     OUTPUT_NAME =  output_string + SCRIPT + "_" + str(j) + ".py"
                     output_path = os.path.join(CODE_DIR_HE, SCRIPT, "Codex", OUTPUT_NAME)

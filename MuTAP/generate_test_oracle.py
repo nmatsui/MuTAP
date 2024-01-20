@@ -131,10 +131,12 @@ def call_LLMs(initial_prompt,stop_w ,max_tokens):
     
     model_output = output
     
+    print("############ prompt start ############")
     print(initial_prompt)
-    print("############")
+    print("############ prompt end   ############")
+    print("############ result start ############")
     print(output)
-    print("############")
+    print("############ result end   ############")
 
     
     return model_output
