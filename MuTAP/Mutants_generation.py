@@ -99,7 +99,7 @@ def Seperate_Mutants(DATASET, num, input_string, csv_file_mut_type):
                 if ln.startswith("+"):
                     ln_partition = ln.split(":")
                     ln_num = (ln_partition[0][1:]).lstrip(' ')
-                    ln_content= ln[6:]
+                    ln_content= ln[5:]
                     #print(org_data)
                     temp = org_data[:]
                     temp[int(ln_num) -1 ] = ln_content
