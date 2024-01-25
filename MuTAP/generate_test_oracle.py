@@ -159,10 +159,6 @@ def generate_test_oracle_from_intial_file(fewshot_path, input_path):
 
     model_output = call_LLMs(initial_prompt, "#</test>", 200) 
     
-    print("inside function")
-    print(model_output)
-    print("############")
-
     file_content = function_to_test+ "\ndef test():\n" + model_output
 
     return(file_content)
